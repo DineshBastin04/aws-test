@@ -119,3 +119,25 @@ if uploaded_file is not None:
 
 if st.button("Stop"):
     st.stop()
+
+
+
+# Function for the first tab content
+def page_one():
+    st.title("Page One")
+    st.write("This is the content of Page One.")
+
+# Function for the second tab content
+def page_two():
+    st.title("Page Two")
+    st.write("This is the content of Page Two.")
+
+# Create tabs
+tabs = st.tabs(["Tab 1", "Tab 2"])
+
+# Display content based on the selected tab
+with tabs[0]:
+    page_one()
+
+with tabs[1]:
+    page_two()
