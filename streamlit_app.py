@@ -14,8 +14,8 @@ from st_files_connection import FilesConnection
 
 # Create connection object and retrieve file contents.
 # Specify input format is a csv and to cache the result for 600 seconds.
-conn = st.connection('s3', type=FilesConnection)
-df = conn.read("s3://mytestbucket126/csv_files/dog.csv", input_format="csv", ttl=600)
+#conn = st.connection('s3', type=FilesConnection)
+#df = conn.read("s3://mytestbucket126/csv_files/dog.csv", input_format="csv", ttl=600)
 
 # Access AWS credentials from st.secrets
 access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
@@ -91,8 +91,8 @@ def start_transcription_and_analysis():
         st.error("Transcription job failed")
 
 
-for row in df.itertuples():
-    st.write(f"{row.Owner} has a :{row.Pet}:")
+#for row in df.itertuples():
+    #st.write(f"{row.Owner} has a :{row.Pet}:")
 # Check if a file is uploaded
 if uploaded_file is not None:
     # Get the file details (optional)
