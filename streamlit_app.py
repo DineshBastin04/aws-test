@@ -143,12 +143,20 @@ with tabs[1]:
     page_two()
 
 
-# Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Page One", "Page Two"])
+# Sidebar navigation buttons
+if st.button("Page One"):
+    st.session_state["page"] = "Page One"
+    st.experimental_rerun()
+
+if st.button("Page Two"):
+    st.session_state["page"] = "Page Two"
+    st.experimental_rerun()
 
 # Display the selected page
-if page == "Page One":
-    page_one()
-elif page == "Page Two":
-    page_two()
+if "page" in st.session_state:
+    if st.session_state["page"] == "Page One":
+        page_one()
+    elif st.session_state["page"] == "Page Two":
+        page_two()
+else:
+    st.write("Please select a page.")
