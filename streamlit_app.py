@@ -143,20 +143,32 @@ with tabs[1]:
     page_two()
 
 
-# Sidebar navigation buttons
-if st.button("Page One"):
-    st.session_state["page"] = "Page One"
+def App1page():
+st.write(“Showing app 1”)
+if st.button(“Return to Main Page”):
+st.session_state.runpage = main_page
+st.experimental_rerun()
+
+def App2page():
+st.write(“Showing app 2”)
+if st.button(“Return to Main Page”):
+st.session_state.runpage = main_page
+st.experimental_rerun()
+
+def main_page():
+st.write(“This is my main menu page”)
+btn1 = st.button(“Show App1”)
+btn2 = st.button(“Show App2”)
+
+if btn1:
+    st.session_state.runpage = App1page
+    st.session_state.runpage()
     st.experimental_rerun()
 
-if st.button("Page Two"):
-    st.session_state["page"] = "Page Two"
+if btn2:
+    st.session_state.runpage = App2page
+    st.session_state.runpage()
     st.experimental_rerun()
-
-# Display the selected page
-if "page" in st.session_state:
-    if st.session_state["page"] == "Page One":
-        page_one()
-    elif st.session_state["page"] == "Page Two":
-        page_two()
-else:
-    st.write("Please select a page.")
+if ‘runpage’ not in st.session_state:
+st.session_state.runpage = main_page
+st.session_state.runpage()
