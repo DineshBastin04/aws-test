@@ -141,3 +141,14 @@ with tabs[0]:
 
 with tabs[1]:
     page_two()
+
+
+# Sidebar navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Page One", "Page Two"])
+
+# Display the selected page
+if page == "Page One":
+    page_one()
+elif page == "Page Two":
+    page_two()
